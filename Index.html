@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MySocial</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #000;
+    color: #fff;
+    padding-bottom: 65px;
+}
+
+header {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    border-bottom: 1px solid #222;
+    position: sticky;
+    top: 0;
+    background: #000;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.header-icons {
+    font-size: 25px;
+}
+
+.stories {
+    display: flex;
+    gap: 14px;
+    padding: 14px;
+    overflow-x: auto;
+    border-bottom: 1px solid #222;
+}
+
+.story {
+    min-width: 65px;
+    text-align: center;
+    font-size: 12px;
+}
+
+.story-img {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #ff0055, #ff9900);
+    padding: 3px;
+    margin: auto;
+}
+
+.story-img div {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+}
+
+.post {
+    border-bottom: 1px solid #222;
+    margin-bottom: 10px;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+
+.username {
+    font-weight: bold;
+}
+
+.post-image {
+    width: 100%;
+    height: 330px;
+    background: #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 70px;
+}
+
+.actions {
+    display: flex;
+    gap: 20px;
+    padding: 12px;
+    font-size: 28px;
+}
+
+.action {
+    cursor: pointer;
+}
+
+.like-count {
+    padding: 0 12px;
+    font-weight: bold;
+}
+
+.caption {
+    padding: 8px 12px 15px;
+}
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: #000;
+    border-top: 1px solid #333;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 25px;
+    z-index: 20;
+}
+
+button {
+    background: none;
+    border: none;
+    color: white;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">MySocial 🚀</div>
+    <div class="header-icons">♡</div>
+</header>
+
+<div class="stories">
+
+    <div class="story">
+        <div class="story-img">
+            <div>👤</div>
+        </div>
+        <p>Your Story</p>
+    </div>
+
+    <div class="story">
+        <div class="story-img">
+            <div>😎</div>
+        </div>
+        <p>Rahul</p>
+    </div>
+
+    <div class="story">
+        <div class="story-img">
+            <div>👩</div>
+        </div>
+        <p>Priya</p>
+    </div>
+
+    <div class="story">
+        <div class="story-img">
+            <div>🔥</div>
+        </div>
+        <p>Aman</p>
+    </div>
+
+    <div class="story">
+        <div class="story-img">
+            <div>🎮</div>
+        </div>
+        <p>Gamer</p>
+    </div>
+
+</div>
+
+<main>
+
+<div class="post">
+
+    <div class="post-header">
+        <div class="avatar">👨</div>
+        <div class="username">abhishek</div>
+    </div>
+
+    <div class="post-image">
+        📸
+    </div>
+
+    <div class="actions">
+
+        <button class="action" onclick="likePost(this)">
+            ♡
+        </button>
+
+        <button class="action">
+            💬
+        </button>
+
+        <button class="action">
+            ➤
+        </button>
+
+    </div>
+
+    <div class="like-count">
+        <span>0</span> likes
+    </div>
+
+    <div class="caption">
+        <b>abhishek</b>
+        Welcome to MySocial 🚀
+    </div>
+
+</div>
+
+</main>
+
+<div class="bottom-nav">
+
+    <span>⌂</span>
+    <span>⌕</span>
+    <span onclick="document.getElementById('createPost').style.display='block'">＋</span>
+    <span>♡</span>
+    <span onclick="document.getElementById('loginBox').style.display='block'">○</span>
+
+</div>
+
+<script>
+
+function likePost(button) {
+
+    let post = button.closest(".post");
+
+    let count = post.querySelector(".like-count span");
+
+    let number = parseInt(count.innerText);
+
+    if (button.innerText.trim() === "♡") {
+        button.innerText = "♥";
+        number++;
+    } else {
+        button.innerText = "♡";
+        number--;
+    }
+
+    count.innerText = number;
+}
+
+</script>
+
+
+<!-- Create Post -->
+<div id="createPost" style="display:none; padding:20px; background:#111; margin:10px; border-radius:15px;">
+    <h2>Create Post</h2>
+
+    <input type="file" id="photoInput" accept="image/*">
+<br>
+
+<img id="photoPreview" style="display:none; width:100%; max-height:300px; object-fit:contain; margin-top:10px; border-radius:10px;">
+    <br><br>
+
+    <button onclick="createPost()" style="padding:12px 20px; border:0; border-radius:10px;">
+        Post 🚀
+    </button>
+</div>
+<script>
+document.getElementById("photoInput").addEventListener("change", function() {
+    const file = this.files[0];
+    const preview = document.getElementById("photoPreview");
+
+    if (file) {
+        preview.src = URL.createObjectURL(file);
+        preview.style.display = "block";
+    }
+});
+</script>
+<script>
+function createPost() {
+    const input = document.getElementById("photoInput");
+
+    if (!input.files.length) {
+        alert("Pehle photo select karo");
+        return;
+    }
+
+    const file = input.files[0];
+    const imageURL = URL.createObjectURL(file);
+
+    const post = document.createElement("div");
+    post.className = "post";
+post.innerHTML = `
+    <div class="post-header">
+        <div class="avatar">👤</div>
+        <div class="username">abhishek</div>
+    </div>
+
+    <img src="${imageURL}" style="width:100%; display:block;">
+
+    <div class="actions">
+        <button onclick="likePost(this)" style="font-size:25px; background:none; border:0; color:white;">
+            ♡
+        </button>
+        💬 &nbsp; ➤
+    </div>
+
+    <div class="like-count">
+        <span>0</span> likes
+    </div>
+
+    <div class="caption">
+        <b>abhishek</b> My new post 🚀
+    </div>
+`;
+    
+
+    document.querySelector("main").prepend(post);
+
+    document.getElementById("createPost").style.display = "none";
+    input.value = "";
+}
+</script>
+<!-- Login / Signup -->
+<div id="loginBox" style="display:none; padding:20px; background:#111; margin:10px; border-radius:15px;">
+
+    <h2>Welcome to MySocial 🚀</h2>
+
+    <input
+        type="text"
+        id="loginName"
+        placeholder="Your name"
+        style="width:100%; padding:12px; margin-top:15px; border-radius:10px; border:0;"
+    >
+
+    <input
+        type="email"
+        id="loginEmail"
+        placeholder="Email"
+        style="width:100%; padding:12px; margin-top:10px; border-radius:10px; border:0;"
+    >
+
+    <button
+        onclick="loginUser()"
+        style="width:100%; padding:12px; margin-top:15px; border:0; border-radius:10px;"
+    >
+        Sign Up / Login
+    </button>
+
+</div>
+
+<script>
+function loginUser() {
+
+    const name = document.getElementById("loginName").value.trim();
+    const email = document.getElementById("loginEmail").value.trim();
+
+    if (!name || !email) {
+        alert("Name aur email dono bharo");
+        return;
+    }
+
+    localStorage.setItem("mySocialName", name);
+    localStorage.setItem("mySocialEmail", email);
+
+    alert("Welcome " + name + " 🚀");
+
+    document.getElementById("loginBox").style.display = "none";
+}
+</script>
+</body>
+</html>
